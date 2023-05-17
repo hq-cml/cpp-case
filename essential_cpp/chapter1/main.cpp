@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
@@ -166,8 +167,52 @@ void GuessNumberV1() {
     }
 }
 
+//文件的读
+void ReadFile(string file) {
+    ifstream inFile(file);
+    if (!inFile) {
+        cerr << "Open failed!"; // 比如文件不存在，就会走到这里
+        return;
+    }
+    string line;
+    int i = 0;
+    while (inFile >> line) {
+        cout << i++ << ": " << line << endl;
+    }
+}
+
+// 文件的写
+void WriteFile(string file, string content) {
+    ofstream outFile(file, ios_base::app);
+    if (!outFile) {
+        cerr << "Open failed!"; // 比如文件不存在，就会走到这里
+        return;
+    }
+    outFile << content;
+}
+
+// 文件读写，TODO 这个函数有问题，写总是失败。。。
+void IOFile(string file, string content) {
+    fstream ioFile(file, ios_base::in|ios_base::out);
+    if (!ioFile) {
+        cerr << "Open failed!"; // 比如文件不存在，就会走到这里
+        return;
+    }
+    ioFile.seekg(0);
+    string line;
+    int i = 0;
+    while (ioFile >> line) {
+        cout << i++ << ": " << line << endl;
+    }
+    //ioFile.seekp(5);
+    ioFile << content << endl;
+}
+
 int main() {
-    GuessNumberV2();
+    IOFile("b.txt", "World");
+    //WriteFile("b.txt", "Hello\n");
+    //ReadFile("a.txt");
+    //GuessNumberV2();
     //GuessNumberV1();
     //Other1();
     //First();
