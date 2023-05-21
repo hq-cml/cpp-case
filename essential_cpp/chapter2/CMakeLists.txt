@@ -3,4 +3,4 @@ project(chapter2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(chapter2 main.cpp)
+add_executable(chapter2 main.cpp NumricSeq.cpp NumricSeq.h)
