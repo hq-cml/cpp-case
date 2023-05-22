@@ -6,12 +6,12 @@ using namespace std;
 void begin();
 
 int main() {
-    const vector<int> *elems =  fibo_seq(10);
-    display(*elems);
-    
+//    const vector<int> *elems =  fibo_seq(10);
+//    display(*elems);
+
     //UseVector();
 
-    //begin();
+    begin();
     return 0;
 }
 
@@ -22,30 +22,28 @@ int main() {
 //      3. 将引用作为函数的入参，本质上复制的是对象的地址
 //      4. 引用作为参数的另一个好处是，避免了内存的大量拷贝
 bool fibon_elem(int pos, int &elem) {
-    if (pos <=0 || pos > 1024) {
+    const vector<int>* pVec = fibo_seq(pos+1);
+    if (!pVec) {
         elem = 0;
         return false;
     }
-    elem = 1;
-    int n1 = 1, n2 = 1;
-    for (int idx = 3; idx <= pos; idx ++) {
-        elem = n1 + n2;
-        n1 = n2;
-        n2 = elem;
-    }
+
+    elem = (*pVec)[pos];
     return true;
 }
 
 void begin() {
     int pos;
-    cout << "Please input a pos:";
-    cin >> pos;
+    while(1){
+        cout << "Please input a pos:";
+        cin >> pos;
 
-    int elem;
-    if(fibon_elem(pos, elem)) {
-        cout << "Elem #" << pos << " is " << elem <<endl;
-    } else {
-        cout << "Sorry. Invalid pos:"<<pos<<endl;
+        int elem;
+        if(fibon_elem(pos, elem)) {
+            cout << "Elem #" << pos << " is " << elem <<endl;
+        } else {
+            cout << "Sorry. Invalid pos:"<<pos<<endl;
+        }
     }
 }
 

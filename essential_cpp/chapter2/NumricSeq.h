@@ -17,6 +17,19 @@ using namespace std;
 void display(const vector<int> &, ostream & = cout);
 
 const vector<int>* fibo_seq(int size);
+
 void UseVector();
+
+// Note: 内联函数
+//      1. 编译器会在调用点将内联函数代码展开，提高运行性能
+//      2. 内联函数通常定义在头文件，便于代码展开
+inline bool checkSize(int size) {
+    const int maxSize = 1024;
+    if (size <=0 || size > maxSize) {
+        cerr<<"invalid size:"<<size<<endl;
+        return false;
+    }
+    return true;
+}
 
 #endif //CHAPTER2_NUMRICSEQ_H

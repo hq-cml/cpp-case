@@ -5,25 +5,28 @@
 #include <iostream>
 #include "NumricSeq.h" // 如果不加这句，则display(vec)将报错
 
+bool checkSize(int size);
+
 using namespace std;
 
 // 斐波那契数列
 // Note: 返回值是一个指向常量的指针
 const vector<int>* fibo_seq(int size) {
-    const int maxSize = 1024;
+
     // Note: 静态局部变量
     //     1. 内容只会初始化一次，分配在了静态区
     //     2. 在多次调用的时候都使用同一块内存
     static vector<int> elems;
 
-    if (size <=0 || size > maxSize) {
-        cerr<<"invalid size:"<<size<<endl;
+    if (!checkSize(size)) {
         return NULL;
     }
 
     // 如果size小于elem.size则不需要重复建立，否则，只需要进行一次附加初始化
     for (int idx = elems.size(); idx < size; idx ++) {
-        if (idx == 0 || idx == 1) {
+        if (idx == 0){
+            elems.push_back(0);
+        } else if( idx == 1) {
             elems.push_back(1);
         } else {
             elems.push_back(elems[idx-1] + elems[idx-2]);
@@ -31,6 +34,7 @@ const vector<int>* fibo_seq(int size) {
     }
     return &elems;
 }
+
 
 // Note: 函数定义
 //     1. 函数定义通常放在源文件中，最终会被编译和链接
