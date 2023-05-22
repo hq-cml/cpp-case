@@ -6,7 +6,10 @@ using namespace std;
 void begin();
 
 int main() {
-    UseVector();
+    const vector<int> *elems =  fibo_seq(10);
+    display(*elems);
+    
+    //UseVector();
 
     //begin();
     return 0;

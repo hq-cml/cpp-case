@@ -16,6 +16,7 @@ using namespace std;
 //       2. 通常放在声明，而非定义中，这样可以使得引用方可见
 void display(const vector<int> &, ostream & = cout);
 
+const vector<int>* fibo_seq(int size);
 void UseVector();
 
 #endif //CHAPTER2_NUMRICSEQ_H
