@@ -37,4 +37,6 @@ inline bool checkSize(int size) {
     return true;
 }
 
+
+
 #endif //CHAPTER2_NUMRICSEQ_H

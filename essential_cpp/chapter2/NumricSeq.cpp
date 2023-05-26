@@ -65,3 +65,15 @@ void display_msg(const string &s) {
 void display_msg(const string &s, int n) {
     cerr<<"invalid size:"<<n<<endl;
 }
+
+// Note: 函数模板
+//    1. typename是关键字；elemType是占位符
+//    2. elemType可以是内置类型，也可以是用户定义类型
+template <typename elemType>
+void display_vec(const string &msg, const vector<elemType> &vec) {
+    cout<<msg;
+    for (int i=0; i<vec.size(); i++) {
+        elemType t = vec[i];
+        cout << t << " ";
+    }
+}
