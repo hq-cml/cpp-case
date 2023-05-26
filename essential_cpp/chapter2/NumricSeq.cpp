@@ -52,3 +52,16 @@ void UseVector() {
     vector<int> vec (arr, arr+8); // Note：使用list来初始化vector
     display(vec); // 有默认值
 }
+
+// 函数重载
+void display_msg(char c) {
+    cout << c<< endl;
+}
+
+void display_msg(const string &s) {
+    cout << s << endl;
+}
+
+void display_msg(const string &s, int n) {
+    cerr<<"invalid size:"<<n<<endl;
+}
