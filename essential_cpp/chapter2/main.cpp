@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
+// Note: 关于头文件是否用双引号
+//      1. 双引号一般表示用户文件，编译器会优先扫描工程目录，没有再去库目录
+//      2. 如果是<>，通常认为是库文件，编译器优先去扫描标准库目录
 #include "NumricSeq.h"
 
 // Note: 函数的声明，让编译器知道begin函数的存在。
@@ -12,13 +15,18 @@ void UseVector();
 //void display_elems(const string &msg, const vector<elemType> &vec);
 
 int main() {
+
+    //测试 extern关键字的使用
+    const vector<int>*v = seq_arr[0](10);
+    display(*v, cout);
+
     //const vector<int> *elems =  fibo_seq(10);
     //display(*elems);
     //display_elems("called by func template!", *elems);
 
-    UseVector();
+    //UseVector();
 
-    begin();
+    //begin();
     return 0;
 }
 

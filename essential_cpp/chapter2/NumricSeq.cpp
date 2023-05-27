@@ -92,3 +92,9 @@ bool seq_elem(int pos, int &elem,
     elem = (*pVec)[pos];
     return true;
 }
+
+// seq_arr变量的定义（用于extern关键字实验）
+const vector<int> *(*seq_arr[])(int) = {
+        fibo_seq
+};
+

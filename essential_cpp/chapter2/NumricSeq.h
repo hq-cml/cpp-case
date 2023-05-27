@@ -26,6 +26,12 @@ void display_msg(char);
 void display_msg(const string &);
 void display_msg(const string &, int);
 
+// Note: extern关键字
+//     1. extern的作用是标注这里的是一个声明，而不是定义
+//     2. 这里的extern是必须的，如果没有这个关键字这里，会报链接错误，提示有多个seq_arr
+//     3. 说白了声明和定义的区别是是否会分配空间，定义是分配空间的，声明则仅仅表示要使用，但是实际定义在了别处
+extern const vector<int> *(*seq_arr[1])(int);
+
 // Note: 内联函数
 //      1. 编译器会在调用点将内联函数代码展开，提高运行性能
 //      2. 内联函数通常定义在头文件，便于代码展开
