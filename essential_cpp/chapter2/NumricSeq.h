@@ -6,6 +6,7 @@
 #define CHAPTER2_NUMRICSEQ_H
 
 #include <vector>
+#include <list>
 #include <iostream>
 using namespace std;
 
@@ -37,6 +38,27 @@ inline bool checkSize(int size) {
     return true;
 }
 
+// Note: 函数模板
+//    1. typename是关键字；elemType是占位符
+//    2. elemType可以是内置类型，也可以是用户定义类型
+//    3. 函数模板的定义需要放在头文件里面，否则会导致链接错误（暂时没找到更优雅的方法）
+template <typename elemType>
+void display_elems(const string &msg, const vector<elemType> &vec) {
+    cout<<msg;
+    for (int i=0; i<vec.size(); i++) {
+        elemType t = vec[i];
+        cout << t << " ";
+    }
+}
 
-
+// Note: 函数模板+重载
+//     1. 函数模板也是可以重载的，比如这里就将vector换成了list
+template <typename elemType>
+void display_elems(const string &msg, const list<elemType> &l) {
+    cout<<msg;
+    for (int i=0; i<l.size(); i++) {
+        elemType t = l[i];
+        cout << t << " ";
+    }
+}
 #endif //CHAPTER2_NUMRICSEQ_H

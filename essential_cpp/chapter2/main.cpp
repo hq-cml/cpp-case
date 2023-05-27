@@ -5,13 +5,14 @@ using namespace std;
 // Note: 函数的声明，让编译器知道begin函数的存在。
 void begin();
 
-template <typename elemType>
-void display_vec(const string &msg, const vector<elemType> &vec);
+//定义已经在头文件，所以不需要声明
+//template <typename elemType>
+//void display_elems(const string &msg, const vector<elemType> &vec);
 
 int main() {
     const vector<int> *elems =  fibo_seq(10);
     //display(*elems);
-    display_vec("called by func template!", *elems);
+    display_elems("called by func template!", *elems);
 
     //UseVector();
 
