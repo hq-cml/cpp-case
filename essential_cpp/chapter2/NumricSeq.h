@@ -19,7 +19,8 @@ void display(const vector<int> &, ostream & = cout);
 
 const vector<int>* fibo_seq(int size);
 
-void UseVector();
+bool fibon_elem(int pos, int &elem);
+bool seq_elem(int pos, int &elem, const vector<int>* seq_ptr(int));
 
 void display_msg(char);
 void display_msg(const string &);
