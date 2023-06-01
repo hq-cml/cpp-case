@@ -3,11 +3,48 @@
 //
 #include <iostream>
 #include <vector>
+#include <list>
 #include "find.h"
 using namespace std;
 
+// 测试findWithIter函数的使用
+void TestFindWithIter() {
+    // 基本类型
+    int arrInt[8] = {1,2,3,4,5,6,7,8};
+
+    // vector类型
+    vector<int> arrVec (arrInt, arrInt+8);
+
+    // list类型
+    list<int> arrList (arrInt, arrInt+8);
+
+    // 普通类型使用
+    int *pi = findWithIter(arrInt, arrInt+8, 7);
+    if (pi!=arrInt+8) {
+        cout << *pi << endl;
+    } else {
+        cout<< "not find in arrInt"<<endl;
+    }
+
+    // vector类型使用
+    vector<int>::iterator it1 = findWithIter(arrVec.begin(), arrVec.end(), 4);
+    if (it1!=arrVec.end()) {
+        cout << *it1 << endl;
+    } else {
+        cout<< "not find in arrVec"<<endl;
+    }
+
+    // list类型使用
+    list<int>::iterator it2 = findWithIter(arrList.begin(), arrList.end(), 10);
+    if (it2!=arrList.end()) {
+        cout << *it2 << endl;
+    } else {
+        cout<< "not find in arrList"<<endl;
+    }
+}
+
 // 测试find函数的使用
-void UseFind() {
+void TestFind() {
     // 基本类型
     int arrInt[8] = {1,2,3,4,5,6,7,8};
     float arrFloat[8] = {1,2,3,4,5,6,7,8};
