@@ -10,7 +10,9 @@
 #include <list>
 #include <deque>
 #include <string>
+#include <iostream>
 #include "container.h"
+#include "find.h"
 
 using namespace std;
 
@@ -35,4 +37,27 @@ void Init() {
 
     // Note：根据另一个容器进行初始化
     list<string> ssslist(ssilist);
+}
+
+// 容器的插入和删除
+void InsertDel() {
+    int a[] = {1,2,3,4};
+    vector<int> oVec(a, a+4);
+
+    // Note：尾部的插入和删除
+    vector<int> v1(oVec.begin(), oVec.end());
+    v1.push_back(5);
+    Display(v1.begin(), v1.end());
+    v1.pop_back();
+    Display(v1.begin(), v1.end());
+
+    // Note：指定为止插入
+    vector<int>::iterator it = findV5(v1.begin(), v1.end(), 3);
+    v1.insert(it, 88); // 在it前面插入
+    Display(v1.begin(), v1.end());
+
+    // Note：删除指定元素
+    it = findV5(v1.begin(), v1.end(), 88);
+    v1.erase(it);
+    Display(v1.begin(), v1.end());
 }
