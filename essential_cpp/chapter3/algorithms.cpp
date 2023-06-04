@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <functional>
+#include <iterator>
 #include "container.h"
 
 using namespace std;
@@ -53,6 +54,18 @@ void TestAlg() {
     int cnt = filter_v3(v0.begin(), v0.end(), v1.begin(), 5, greater<int>());
     cout <<"Found---"<< cnt <<endl;
     Display(v1.begin(), v1.end());
+
+    // 上面的使用方式很显然存在一个问题，就是v1需要初始化8个元素防止内存越界，实际上这形成了很多浪费
+    // Note: Iterator Inserter(迭代插入器）
+    //       作用就是解决这种问题，使得不需要提前分配空间，原理是将赋值操作替换为插入操作！
+    //       共有三种：
+    //       back_inserter：将filter_v3内的at++，篡改替换成了push_back()
+    //       inserter：将filter_v3内的at++，篡改成指定为止的插入
+    //       front_inserter：将filter_v3内的at++，篡改替换成了push_front()
+    vector<int> v2; // 无需初始，避免浪费
+    cnt = filter_v3(v0.begin(), v0.end(), back_inserter(v2), 5, greater<int>());
+    cout <<"Found---"<< cnt <<endl;
+    Display(v2.begin(), v2.end());
 }
 
 // Note: function object（函数对象）
