@@ -3,4 +3,4 @@ project(chapter3)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(chapter3 main.cpp find.cpp find.h)
+add_executable(chapter3 main.cpp find.cpp find.h container.cpp container.h)
