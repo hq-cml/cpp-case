@@ -41,6 +41,20 @@ bool greater_than(int v1, int v2) {
     return v1 > v2;
 }
 
+// 测试
+void TestAlg() {
+    int a[] = {1,3,2,4,8,5,7,6};
+    vector<int> v0(a, a+8);
+    vector<int> tmp = filter_v2(v0, 4, less_than);
+    Display(tmp.begin(), tmp.end());
+
+    // 为了通用性，牺牲了太多的可读性和使用的方便性，并不值得
+    vector<int> v1(8);
+    int cnt = filter_v3(v0.begin(), v0.end(), v1.begin(), 5, greater<int>());
+    cout <<"Found---"<< cnt <<endl;
+    Display(v1.begin(), v1.end());
+}
+
 // Note: function object（函数对象）
 //       函数对象是某些类的实例，由于这些类重载了函数调用操作符，所以函数对象可以当做函数来使用
 //       它的好处是效率更高，默认是内联的
@@ -68,6 +82,8 @@ void TestFuncObj() {
     vector<int> vec(aa, aa+8);
     vector<int> ret;
     vector<int>::iterator it = vec.begin();
+    // Note: bind2nd
+    // 6被绑定到了less<int>第二个参数上面，所以这里每个成员都会和6比大小
     while ((it = find_if(it, vec.end(), bind2nd(less<int>(), 6)))!=vec.end()){
         ret.push_back(*it);
         it++;
