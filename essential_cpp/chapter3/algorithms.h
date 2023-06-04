@@ -6,4 +6,6 @@
 #define CHAPTER3_ALGORITHMS_H
 
 void CommonAlg();
+void TestAlg();
+void TestFuncObj();
 #endif //CHAPTER3_ALGORITHMS_H

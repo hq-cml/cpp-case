@@ -8,7 +8,9 @@ using namespace std;
  */
 
 int main() {
-    CommonAlg();
+    TestFuncObj();
+    //TestAlg();
+    //CommonAlg();
     //OtherOpt();
     //InsertDel();
     //TestFindWithIter();
