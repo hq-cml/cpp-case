@@ -61,3 +61,35 @@ void InsertDel() {
     v1.erase(it);
     Display(v1.begin(), v1.end());
 }
+
+// Note: 容器其他常用操作：判等、判空、求大小、清空等
+void OtherOpt() {
+    int a[] = {1,2,3,4};
+    vector<int> v1(a, a+4);
+
+    vector<int> v2;
+    if (v2.empty()) {
+        cout << "v2 is empty now"<<endl;
+    }
+    v2.push_back(1);
+    v2.push_back(2);
+    v2.push_back(3);
+    v2.push_back(4);
+
+    if (v1==v2) {
+        cout << "same"<<endl;
+    } else {
+        cout << "not same" <<endl;
+    }
+
+    v2.push_back(5);
+    if (v1==v2) {
+        cout << "same"<<endl;
+    } else {
+        cout << "not same" <<endl;
+    }
+
+    cout << "v2's len="<< v2.size()<<endl;
+    v2.clear();
+    cout << "v2's len="<< v2.size()<<endl;
+}

@@ -9,6 +9,7 @@ using namespace std;
 
 void Init();
 void InsertDel();
+void OtherOpt();
 
 template<typename ItType>
 void Display(ItType first, ItType last) {

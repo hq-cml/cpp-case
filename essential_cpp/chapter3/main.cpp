@@ -5,7 +5,8 @@ using namespace std;
 
 
 int main() {
-    InsertDel();
+    OtherOpt();
+    //InsertDel();
     //TestFindWithIter();
     //TestFind();
     //std::cout << "Hello, World!" << std::endl;
