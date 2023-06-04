@@ -1,11 +1,15 @@
 #include <iostream>
 #include "find.h"
 #include "container.h"
+#include "algorithms.h"
 using namespace std;
-
+/*
+ * chapter3：泛型的编程风格
+ */
 
 int main() {
-    OtherOpt();
+    CommonAlg();
+    //OtherOpt();
     //InsertDel();
     //TestFindWithIter();
     //TestFind();
