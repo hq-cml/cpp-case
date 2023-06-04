@@ -8,8 +8,10 @@ using namespace std;
  */
 
 int main() {
+    UseSet();
+    //UseMap();
     //TestFuncObj();
-    TestAlg();
+    //TestAlg();
     //CommonAlg();
     //OtherOpt();
     //InsertDel();

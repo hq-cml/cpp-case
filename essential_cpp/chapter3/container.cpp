@@ -11,12 +11,62 @@
 #include <deque>
 #include <string>
 #include <iostream>
+#include <set>
+#include <map>
 #include "container.h"
 #include "find.h"
 
 using namespace std;
 
-// 容器初始化的方法
+// Note: Set的使用
+//       1. Set的一个特点是：自动去重 & 排序！！
+void UseSet() {
+    set<int> iset1;
+    int a [8] = {8,2,2,3,2,1,4,6};
+    vector<int> vec (a, a+8);
+    set<int> iset2(vec.begin(), vec.end()); // 初始化
+    iset1.insert(vec.begin(), vec.end()); // 插入元素
+
+    // Set迭代
+    for(set<int>::iterator it=iset1.begin(); it!=iset1.end(); it ++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+    for(set<int>::iterator it=iset2.begin(); it!=iset2.end(); it ++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+}
+// Note: Map的使用
+//       1. map的元素不能随便读取，如果不存在会自动默认初始化！
+//       2. 要读取，先用find或者count来判断存在性！
+void UseMap() {
+    map<string, int> words;
+    words["foo"] = 1;
+    words["bar"] = 2;
+
+    // 遍历
+    map<string, int>::iterator it = words.begin();
+    for (; it != words.end(); it++) {
+        cout << "Key:" << it->first<< ". Val:"<< it->second << endl;
+    }
+
+    // 判断key
+    if(words.find("shit")!=words.end()) {
+        cout << "exist"<<endl;
+    } else {
+        cout << "not exist"<<endl;
+    }
+
+    // 判断key的第二种方法
+    if (words.count("foo")) {
+        cout << "exist"<<endl;
+    } else {
+        cout << "not exist"<<endl;
+    }
+}
+
+// 顺序容器初始化的方法
 void Init() {
     // Note：产生空容器
     list<string> slist;
@@ -39,7 +89,7 @@ void Init() {
     list<string> ssslist(ssilist);
 }
 
-// 容器的插入和删除
+// 顺序容器的插入和删除
 void InsertDel() {
     int a[] = {1,2,3,4};
     vector<int> oVec(a, a+4);
@@ -62,7 +112,8 @@ void InsertDel() {
     Display(v1.begin(), v1.end());
 }
 
-// Note: 容器其他常用操作：判等、判空、求大小、清空等
+// Note:
+//   顺序容器其他常用操作：判等、判空、求大小、清空等
 void OtherOpt() {
     int a[] = {1,2,3,4};
     vector<int> v1(a, a+4);

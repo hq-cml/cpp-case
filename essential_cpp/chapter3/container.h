@@ -10,6 +10,8 @@ using namespace std;
 void Init();
 void InsertDel();
 void OtherOpt();
+void UseMap();
+void UseSet();
 
 template<typename ItType>
 void Display(ItType first, ItType last) {
