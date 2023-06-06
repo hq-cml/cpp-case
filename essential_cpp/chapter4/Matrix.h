@@ -17,6 +17,8 @@ public:
         // 分配堆内存
         _pmat = new double[_col * _row];
     }
+    // Note：拷贝构造
+    Matrix(const Matrix &);
     ~Matrix() {
         // 通过析构函数自动释放堆内存
         cout << "release"<<endl;
