@@ -29,7 +29,14 @@ _length(t._length), _next(t._next), _beg_pos(t._beg_pos){
     // Note：这里是空的，因为初始化工作已经由初始化列表完成！！！
 }
 
+// Note: 成员函数的const标记
+//       标记为const的成员函数定义在类外的话，也需要const标记
+int Triangular::elem(int pos) const {
+    return _elems[pos-1];
+}
+
 void TestUseTrangular() {
     Triangular t;
     cout << t.GetLen() <<endl;
+    //cout << t.elem(1) <<endl;
 }
