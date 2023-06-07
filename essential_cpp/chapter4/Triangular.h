@@ -27,14 +27,13 @@ public:
     int length() const {return _length;}
     int beg_pos() const {return _beg_pos;}
     int elem(int pos) const;
+    bool next(int &v) const;
+    void next_reset() const {_next = _beg_pos - 1;}
 
-    // 非const成员函数
-    bool next(int &v);
-    void next_reset() {_next = _beg_pos - 1;}
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
-    int _next;    // 下一个迭代位置
+    mutable int _next;    // 下一个迭代位置
 
     static vector<int> _elems;
 };
