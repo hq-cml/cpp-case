@@ -54,6 +54,16 @@ bool Triangular::next(int &v) const {
     return false;
 }
 
+// Note: this指针
+Triangular& Triangular::copy(const Triangular &src) {
+    if (this != &src) {
+        this->_length = src._length; //Note: this->可省略
+        _beg_pos = src._beg_pos;
+        _next = src._next;
+    }
+    return *this;
+}
+
 // 数列求和
 int sum(const Triangular &tria) {
     if (!tria.length()) {
@@ -69,6 +79,6 @@ int sum(const Triangular &tria) {
 
 void TestUseTrangular() {
     Triangular t;
-    cout << sum(t) <<endl;
+    //cout << sum(t) <<endl;
     //cout << t.elem(1) <<endl;
 }

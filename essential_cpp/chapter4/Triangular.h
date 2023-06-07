@@ -30,6 +30,8 @@ public:
     bool next(int &v) const;
     void next_reset() const {_next = _beg_pos - 1;}
 
+    // 非const标记成员函数
+    Triangular& copy(const Triangular& src);
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
