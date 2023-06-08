@@ -5,16 +5,20 @@
 #include "Triangular.h"
 using namespace std;
 
+// Note: 类静态成员
+//    1. _elems需要源文件中明确定义
+//    2. _temp已经初始化，不需要在定义
+//    3. static关键字仅需要在声明时候，这里不再需要
+vector<int> Triangular::_elems;
+//const int Triangular::_max_elem_cnt=1;
+
+
 // 和默认值版本冲突
 //Triangular::Triangular(){
 //    _length = 1;
 //    _beg_pos = 1;
 //    _next = 0;
 //}
-
-// Note: 类静态成员，源文件中明确定义
-vector<int> Triangular::_elems;
-//const int Triangular::temp=1;
 
 Triangular::Triangular(int len){
     _length = len;
@@ -67,9 +71,10 @@ Triangular& Triangular::copy(const Triangular &src) {
 }
 
 void Triangular::Temp() {
-    cout << temp << endl;
+    cout << _max_elem_cnt << endl;
     cout << _elems.size() << endl;
 }
+
 // 数列求和
 int sum(const Triangular &tria) {
     if (!tria.length()) {
@@ -83,10 +88,44 @@ int sum(const Triangular &tria) {
     return sum;
 }
 
+
+// Note: 类静态成员函数
+//      1. static关键字仅需要在声明时候，这里不再需要
+void Triangular::gen_elems_to_value(int value) {
+    int ix = _elems.size();
+    if (!ix) {
+        _elems.push_back(1);
+        ix ++;
+    }
+    while(_elems[ix-1] < value && ix < _max_elem_cnt) {
+        ix++;
+        _elems.push_back(ix*(ix+1)/2);
+    }
+    if (ix >= _max_elem_cnt) {
+        cerr << "too large"<<endl;
+    }
+}
+
+void Triangular::display(ostream &os) {
+    for(int i=0; i<_elems.size(); i++) {
+        os << _elems[i] << ", ";
+    }
+    os<<endl;
+}
+
 void TestUseTrangular() {
     Triangular t;
-    t.Temp();
+    //t.Temp();
 
-    //cout << sum(t) <<endl;
-    //cout << t.elem(1) <<endl;
+    //t.gen_elems_to_value(20);
+    Triangular::gen_elems_to_value(20);
+
+    // Note:: 静态函数
+    //        可以使用类名调用，也可以使用成员实例调用
+    Triangular::display();
+    t.display();
+
+    Triangular t2(5, 1);
+    cout << "sum: " << sum(t2) <<endl;
+    cout << "pos[1]: " << t2.elem(5) <<endl;
 }
