@@ -32,12 +32,20 @@ public:
 
     // 非const标记成员函数
     Triangular& copy(const Triangular& src);
+    void Temp(); // 测试一下静态成员声明和定义
+
+    
+
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
     mutable int _next;    // 下一个迭代位置
 
+    // Note: 类静态成员
+    //     1. vector<int>这类这里这里仅是声明，它还必须拥有一份明确的定义（源文件中）
+    //     2. int这类，可以在声明的时候给定初值，就不需要再次定义；否则需要定义
     static vector<int> _elems;
+    const static int temp=1;
 };
 
 

@@ -12,7 +12,9 @@ using namespace std;
 //    _next = 0;
 //}
 
+// Note: 类静态成员，源文件中明确定义
 vector<int> Triangular::_elems;
+//const int Triangular::temp=1;
 
 Triangular::Triangular(int len){
     _length = len;
@@ -64,6 +66,10 @@ Triangular& Triangular::copy(const Triangular &src) {
     return *this;
 }
 
+void Triangular::Temp() {
+    cout << temp << endl;
+    cout << _elems.size() << endl;
+}
 // 数列求和
 int sum(const Triangular &tria) {
     if (!tria.length()) {
@@ -79,6 +85,8 @@ int sum(const Triangular &tria) {
 
 void TestUseTrangular() {
     Triangular t;
+    t.Temp();
+
     //cout << sum(t) <<endl;
     //cout << t.elem(1) <<endl;
 }
