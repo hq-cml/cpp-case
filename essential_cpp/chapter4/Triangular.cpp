@@ -2,6 +2,7 @@
 // Created by hq on 2023/6/5.
 //
 #include <iostream>
+#include <algorithm>
 #include "Triangular.h"
 using namespace std;
 
@@ -106,6 +107,31 @@ void Triangular::gen_elems_to_value(int value) {
     }
 }
 
+void Triangular::gen_elems(int len) {
+    if (len < 0 || len > _max_elem_cnt) {
+        return;
+    }
+
+    if(_elems.size() < len) {
+        int ix = _elems.size()?_elems.size()+1:1;
+        for (; ix <= len; ix ++) {
+            _elems.push_back(ix*(ix+1)/2);
+        }
+    }
+    return;
+}
+
+// Note: 判断元素是否存在
+//       这里使用了内置的泛型算法find()（第三章）
+bool Triangular::has_elem(int val) {
+    if (!_elems.size() || _elems[_elems.size()-1] < val){
+        gen_elems_to_value(val);
+    }
+
+    vector<int>::iterator found = find(_elems.begin(), _elems.end(), val);
+    return found != _elems.end();
+}
+
 void Triangular::display(ostream &os) {
     for(int i=0; i<_elems.size(); i++) {
         os << _elems[i] << ", ";
@@ -128,4 +154,7 @@ void TestUseTrangular() {
     Triangular t2(5, 1);
     cout << "sum: " << sum(t2) <<endl;
     cout << "pos[1]: " << t2.elem(5) <<endl;
+
+    cout << "has 5? "<< t2.has_elem(5) << endl;
+    cout << "has 15? "<< Triangular::has_elem(15) << endl;
 }

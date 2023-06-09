@@ -56,13 +56,14 @@ T* findV4(T *first, T *end, T target) {
 }
 
 // Note：迭代器 Iterator
-// v4.0虽然已经很优雅，但是仍然有进一步抽象通用化的空间
-// 比如find只能接受内存连续的类型，如数组、vector等类型，如果要是list类型，就不支持了
-// 要想支持list，需要进一步的抽象，对于指针类型进行封装，使得指针的++、*等操作能够针对底层不同类型而不同
-// 引入了iterator class来代替指针，它能够实现千人千面，根据底层不同类型来实现不同的++、*等操作
-// 此外，标准容器，都提供了begin()，end()等方法来获取到对应的iterator，如下
-// vector<int> vecInt;
-// vector<int>::it = vecInt.begin()
+//   v4.0虽然已经很优雅，但是仍然有进一步抽象通用化的空间
+//   比如find只能接受内存连续的类型，如数组、vector等类型，如果要是list类型，就不支持了
+//   要想支持list，需要进一步的抽象，对于指针类型进行封装，使得指针的++、*等操作能够针对底层不同类型而不同
+//   引入了iterator class来代替指针，它能够实现千人千面，根据底层不同类型来实现不同的++、*等操作
+//   此外，标准容器，都提供了begin()，end()等方法来获取到对应的iterator，如下：
+//       vector<int> vecInt;
+//       vector<int>::iterator it = vecInt.begin()
+//   这里的vector<int>::iterator表示iterator是vector<int>的内嵌类型，这个在第4章有更详细说明
 template<typename ItType, typename T>
 ItType findV5(ItType first, ItType last, T target) {
     for (ItType iter=first; iter!=last; iter++) {

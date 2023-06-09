@@ -36,17 +36,23 @@ public:
 
     // Note: 类静态成员函数
     static void gen_elems_to_value(int value);
+    static void gen_elems(int len);
     static void display(ostream &os = cout);
+    static bool has_elem(int val);
+
+    // TMP:临时放在这里，有了友元之后放回去
+    static vector<int> _elems;
+    const static int _max_elem_cnt=1024;
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
-    mutable int _next;    // 下一个迭代位置
+    mutable int _next;    // 下一个迭代位置 Note: mutable表示即便是const标记函数，也能更改它
 
     // Note: 类静态成员
     //     1. vector<int>这类这里这里仅是声明，它还必须拥有一份明确的定义（源文件中）
     //     2. int这类，可以在声明的时候给定初值，就不需要再次定义；否则需要定义
-    static vector<int> _elems;
-    const static int _max_elem_cnt=1024;
+//    static vector<int> _elems;
+//    const static int _max_elem_cnt=1024;
 };
 
 
