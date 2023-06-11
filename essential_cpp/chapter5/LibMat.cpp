@@ -9,7 +9,7 @@ void TestPrint() {
     LibMat libmat;
     print(libmat);
     cout << "------------------------------------"<< endl;
-    
+
     Book b("foo", "bar");
     print(b);
     cout << "------------------------------------"<< endl;

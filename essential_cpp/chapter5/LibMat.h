@@ -36,6 +36,10 @@ public:
         cout << "Book::Book (" << title << ", "<<author <<") constructor!"<<endl;
     }
 
+    // Note: 虚析构
+    //     只要类有一个虚函数存在了，则析构必须要是虚的!
+    //     原因是如果用delete销毁某个父类指针的时候，
+    //     实际销毁的应该是对应的子类实例才对，只有虚析构能实现这种delete的多态
     virtual ~Book() {
         cout << "Book::~Book() destructor!"<<endl;
     }
