@@ -71,9 +71,9 @@ Triangular& Triangular::copy(const Triangular &src) {
     return *this;
 }
 
-void Triangular::Temp() {
-    cout << _max_elem_cnt << endl;
-    cout << _elems.size() << endl;
+int Triangular::GetBegin(string s) {
+    cout << "the params: "<< s << endl;
+    return _beg_pos;
 }
 
 // 数列求和
@@ -88,7 +88,6 @@ int sum(const Triangular &tria) {
     }
     return sum;
 }
-
 
 // Note: 类静态成员函数
 //      1. static关键字仅需要在声明时候，这里不再需要
@@ -164,4 +163,23 @@ void TestUseTrangular() {
         cout << *it << " ";
     }
     cout << endl;
+}
+
+// Note: 成员函数指针
+//       1. 成员函数指针和普通函数指针的区别是比较大的
+//       2. 首先是定义的时候，需要带类信息
+//       3. 赋值的时候，采用&Class::func的形式赋值
+//       4. 使用的时候，需要搭配一个对象来使用（因为真正的成员指针只有在对象中才会有）
+void TestMemberFuncPtr() {
+    Triangular t2(5, 1);
+    Triangular *p1 = &t2;
+
+    // 定义需要带类信息
+    int (Triangular::*pm) (string) = 0;
+    // 赋值需要&Class::func的形式赋值
+    pm = &Triangular::GetBegin;
+    // 使用需要搭配一个类对象
+    cout << (t2.*pm)("hello") << endl;
+    // 如果只有类对象的指针，则如下方法使用
+    cout << (p1->*pm)("world") << endl;
 }

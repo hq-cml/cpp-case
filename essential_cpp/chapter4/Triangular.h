@@ -8,6 +8,7 @@
 using namespace std;
 
 void TestUseTrangular();
+void TestMemberFuncPtr();
 
 //Note: TriangularIterator类
 //     1. 手动实现的迭代器类
@@ -58,7 +59,7 @@ public:
 
     // 非const标记成员函数
     Triangular& copy(const Triangular& src);
-    void Temp(); // 测试一下静态成员声明和定义
+    int GetBegin(string s); // 测试成员函数指针
 
     // Note: 类静态成员函数
     static void gen_elems_to_value(int value);
