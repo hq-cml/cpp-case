@@ -157,4 +157,10 @@ void TestUseTrangular() {
 
     cout << "has 5? "<< t2.has_elem(5) << endl;
     cout << "has 15? "<< Triangular::has_elem(15) << endl;
+
+    Triangular::iterator it = t2.begin();
+    for (; it != t2.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
 }

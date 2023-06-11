@@ -9,6 +9,25 @@ using namespace std;
 
 void TestUseTrangular();
 
+//Note: TriangularIterator类
+//     1. 手动实现的迭代器类
+//     2. 运算符重载
+//     3. 通常最好是单独定义一套.cpp和.h，但是这个类比较特殊，存在循环include头文件的问题
+class TriangularIterator {
+public:
+    TriangularIterator(int idx):_index(idx-1){} // 外部idx从1开始，内部从0开始
+    //Note: 运算符重载
+    bool operator==(const TriangularIterator &) const;
+    bool operator!=(const TriangularIterator &) const;
+    int operator*() const;
+    TriangularIterator& operator++(); //Note: ++前置版本
+    TriangularIterator operator++(int); //Note: ++后置版本
+private:
+    void check_integrity() const;
+    int _index; // 整个类都是在维护这个index值，指向Triangular类对象_elems向量的元素
+};
+
+// Note: 主类
 class Triangular {
 public:
     // Note: 构造函数
@@ -43,6 +62,19 @@ public:
     // TMP:临时放在这里，有了友元之后放回去
     static vector<int> _elems;
     const static int _max_elem_cnt=1024;
+
+    // Note: 将手动实现的Iterator Class内嵌到主类中
+    //       通过typedef，使得iterator成为一种类型（内嵌类型）
+    //       外部可以使用Triangular::iterator来定义迭代器变量了
+    typedef TriangularIterator iterator;
+    // Note: 使用Iterator Class类对象
+    iterator begin() const {
+        return iterator(_beg_pos);
+    }
+    iterator end() const {
+        return iterator(_beg_pos+_length);
+    }
+
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
@@ -55,5 +87,44 @@ private:
 //    const static int _max_elem_cnt=1024;
 };
 
+/*
+ * Note: TriangularIterator基本是内联函数，所以都放在头文件中
+ */
+//Note: 内联函数定义在类外，需要额外指明inline
+inline void TriangularIterator::check_integrity() const {
+    if (_index >= Triangular::_max_elem_cnt) {
+        //throw iterator_overflow();
+        cerr <<"iterator_overflow" <<endl;
+        return;
+    }
 
+    if (_index >= Triangular::_elems.size()) {
+        Triangular::gen_elems(_index+1);
+    }
+}
+
+inline bool TriangularIterator::operator==(const TriangularIterator &t) const {
+    return _index == t._index;
+}
+inline bool TriangularIterator::operator!=(const TriangularIterator &t) const {
+    return  !(*this == t); // Note: 这里其实是调用了重载的==
+}
+inline int TriangularIterator::operator*() const {
+    check_integrity();
+    return Triangular::_elems[_index];
+}
+inline TriangularIterator& TriangularIterator::operator++() { //Note: ++ 前置版本
+    _index ++;
+    check_integrity();
+    return *this;
+}
+//Note: ++ 后置版本
+//      1. 后置版本，固定写法是用一个int参数，这个参数无实际意义
+//      2. 后置版本，返回的是一个临时变量，非引用，因为后置是先使用再自增
+inline TriangularIterator TriangularIterator::operator++(int) {
+    TriangularIterator it = *this; // 先拷贝一份自身
+    _index ++;
+    check_integrity();
+    return *it;
+}
 #endif //CHAPTER4_TRIANGULAR_H
