@@ -27,9 +27,16 @@ private:
     int _index; // 整个类都是在维护这个index值，指向Triangular类对象_elems向量的元素
 };
 
+
 // Note: 主类
 class Triangular {
 public:
+    // Note: 友元
+    //      1. 将TriangularIterator声明为主类的朋友类，则在迭代器里面可以访问主类的private成员
+    //      2. 友元的另一种形式是友元函数，就是只针对一个方法来声明友元，同样是使用friend关键字
+    //      3. 友元破坏了封装性，最好别乱用，这里其实可以对private成员提供public的getter方法避免友元
+    friend class TriangularIterator;
+
     // Note: 构造函数
     //       1. 支持重载
     //       2. 可以有默认值，在声明中声明即可
@@ -59,10 +66,6 @@ public:
     static void display(ostream &os = cout);
     static bool has_elem(int val);
 
-    // TMP:临时放在这里，有了友元之后放回去
-    static vector<int> _elems;
-    const static int _max_elem_cnt=1024;
-
     // Note: 将手动实现的Iterator Class内嵌到主类中
     //       通过typedef，使得iterator成为一种类型（内嵌类型）
     //       外部可以使用Triangular::iterator来定义迭代器变量了
@@ -83,8 +86,8 @@ private:
     // Note: 类静态成员
     //     1. vector<int>这类这里这里仅是声明，它还必须拥有一份明确的定义（源文件中）
     //     2. int这类，可以在声明的时候给定初值，就不需要再次定义；否则需要定义
-//    static vector<int> _elems;
-//    const static int _max_elem_cnt=1024;
+    static vector<int> _elems;
+    const static int _max_elem_cnt=1024;
 };
 
 /*
