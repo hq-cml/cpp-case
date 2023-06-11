@@ -2,9 +2,11 @@
 #include "Stack.h"
 #include "Triangular.h"
 #include "Matrix.h"
+#include "less_than.h"
 
 int main() {
-    TestUseMatrix();
+    TestLessThan();
+    //TestUseMatrix();
     //TestUseTrangular();
     //TestStack();
     return 0;

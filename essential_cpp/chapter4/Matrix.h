@@ -25,7 +25,7 @@ public:
         cout << "release"<<endl;
         delete []_pmat;
     }
-    // Note: 拷贝赋值函数
+    // Note: 拷贝赋值函数 & 运算符重载
     Matrix& operator=(const Matrix &src);
 private:
     int _row, _col;
