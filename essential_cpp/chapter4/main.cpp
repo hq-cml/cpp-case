@@ -5,8 +5,8 @@
 #include "less_than.h"
 
 int main() {
-    TestLessThan();
-    //TestUseMatrix();
+    //TestLessThan();
+    TestUseMatrix();
     //TestUseTrangular();
     //TestStack();
     return 0;

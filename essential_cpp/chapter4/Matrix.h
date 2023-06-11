@@ -27,6 +27,10 @@ public:
     }
     // Note: 拷贝赋值函数 & 运算符重载
     Matrix& operator=(const Matrix &src);
+
+    // Note；友元声明
+    //       这里是友元的函数形式（相对于友元类来说）
+    friend ostream& operator<<(ostream &os, const Matrix &src);
 private:
     int _row, _col;
     double *_pmat;

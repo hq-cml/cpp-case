@@ -35,6 +35,17 @@ Matrix& Matrix::operator=(const Matrix &src) {
         _pmat[i] = src._pmat[i];
     }
 }
+
+// Note: 重载<<和>>
+//       1. 注意，这里是运算符重载的第二种形式！--非成员函数
+//       2. 之所以采用非成员函数形式，因为成员函数要求参数1是类对象本身
+//       3. 这里涉及到参数顺序的问题，类对象需要作为第二个参数，所以采用了非成员函数方式
+//       4. 重载<<，类似与Java的ToString；重载>>毫无意义得复杂，这里省略了
+ostream& operator<<(ostream &os, const Matrix &src) {
+    os << "row: " << src._row << ". col: "<< src._col << endl;
+    return os;
+}
+
 void TestUseMatrix() {
     Matrix m1(10, 10);
     // 如果没有实现拷贝构造函数，下面的语句将触发堆内存的二次释放，引发严重错误
@@ -44,4 +55,6 @@ void TestUseMatrix() {
 
     Matrix m3(1, 1);
     m3 = m1;
+
+    cout << m1;
 }

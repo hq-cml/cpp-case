@@ -4,7 +4,6 @@
 
 #ifndef CHAPTER4_LESS_THAN_H
 #define CHAPTER4_LESS_THAN_H
-
 /*
  * Note：function object. 括号的运算符重载
  *      1. 当编译器遇到一个函数调用语法：xx()
