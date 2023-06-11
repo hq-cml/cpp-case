@@ -4,8 +4,8 @@
 #include "Matrix.h"
 
 int main() {
-    //TestUseMatrix();
-    TestUseTrangular();
+    TestUseMatrix();
+    //TestUseTrangular();
     //TestStack();
     return 0;
 }

@@ -10,7 +10,7 @@ using namespace std;
 
 void TestUseMatrix();
 
-// Note: 析构函数
+// Note：涉及深拷贝的问题（拷贝构造 & 拷贝赋值）
 class Matrix {
 public:
     Matrix(int row, int col):_col(col),_row(row) {
@@ -19,11 +19,14 @@ public:
     }
     // Note：拷贝构造
     Matrix(const Matrix &);
+    // Note: 析构函数
     ~Matrix() {
         // 通过析构函数自动释放堆内存
         cout << "release"<<endl;
         delete []_pmat;
     }
+    // Note: 拷贝赋值函数
+    Matrix& operator=(const Matrix &src);
 private:
     int _row, _col;
     double *_pmat;
