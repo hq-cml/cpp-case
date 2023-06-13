@@ -1,7 +1,9 @@
 #include <iostream>
 
 #include "LibMat.h"
+#include "Fibonacci.h"
 int main() {
-    TestPrint();
+    TestUseFib();
+    //TestPrint();
     return 0;
 }
