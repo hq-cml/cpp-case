@@ -17,19 +17,14 @@ void TestUseFib();
 //      2. 父类中的private成员不能使用
 class Fibonacci: public NumSequence {
 public:
+    // Note: 子类构造函数初始化器直接调用父类构造函数
     Fibonacci(int len=1, int beg_pos=1):
-    _length(len), _beg_pos(beg_pos){}
+            NumSequence(len, beg_pos, _elems){}
 
-    virtual int elem(int pos) const;                          // 返回pos位置的元素
     virtual const char * what_am_i() const {return "Fibonacci";}   //返回确切的数列类型
-    virtual ostream &print(ostream &os=cout) const;           // 输出所有元素
 
-    int length()const {return _length;}
-    int beg_pos() const {return _beg_pos;}
 protected:
     virtual void gen_elems(int pos) const;
-    int _length;
-    int _beg_pos;
     static vector <int> _elems;
 };
 
