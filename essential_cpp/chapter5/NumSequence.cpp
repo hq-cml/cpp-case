@@ -16,9 +16,13 @@ bool NumSequence::check_integrity(int pos, int size) const {
     //     1. 在父类中调用了一个纯虚函数
     //     2. 这里最终将因为多态机制，实际调用的是子类的方法！
     if(pos > size) {
-        cout << "here2" <<endl;
+        //cout << "here2" <<endl;
         gen_elems(pos);
     }
     return true;
 }
 
+// Note: <<运算符重载
+ostream &operator<<(ostream &os, const NumSequence &ns) {
+    return ns.print(os);
+}

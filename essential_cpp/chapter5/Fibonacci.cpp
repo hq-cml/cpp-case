@@ -3,6 +3,7 @@
 //
 
 #include "Fibonacci.h"
+#include "NumSequence.h"
 #include <iostream>
 using namespace std;
 
@@ -18,7 +19,7 @@ int Fibonacci::elem(int pos) const {
 }
 
 void Fibonacci::gen_elems(int pos) const {
-    cout << "gen_elems" << endl;
+    //cout << "gen_elems" << endl;
     if (_elems.empty()) {
         _elems.push_back(1);
         _elems.push_back(1);
@@ -40,7 +41,7 @@ ostream &Fibonacci::print(ostream &os) const {
     int end_pos = elem_pos+_length;
 
     if (end_pos > _elems.size()) {
-        cout << "here1" <<endl;
+        //cout << "here1" <<endl;
         // Note: 这里用了一个域作用符
         //      1. 作者解释这样做是为了直接指定调用Fibonacci类的gen_elems，而不是调用父类的，强行掩盖虚拟机制
         //      2. 根据实际测试，这里加不加这个域作用符效果相同，而且根据覆盖原则，可以解释得通
@@ -53,10 +54,6 @@ ostream &Fibonacci::print(ostream &os) const {
     return os;
 }
 
-// Note: <<运算符重载
-ostream &operator<<(ostream &os, const NumSequence &ns) {
-    return ns.print(os);
-}
 
 void TestUseFib() {
     Fibonacci fib(10);

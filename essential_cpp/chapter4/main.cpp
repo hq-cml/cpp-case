@@ -5,10 +5,10 @@
 #include "less_than.h"
 
 int main() {
-    TestMemberFuncPtr();
+    //TestMemberFuncPtr();
     //TestLessThan();
     //TestUseMatrix();
-    //TestUseTrangular();
+    TestUseTrangular();
     //TestStack();
     return 0;
 }

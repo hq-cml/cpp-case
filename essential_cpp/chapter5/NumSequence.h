@@ -38,6 +38,7 @@ protected:
     const static int _max_elems = 1024;                   //
 };
 
-
+// 声明
+ostream &operator<<(ostream &os, const NumSequence &ns);
 
 #endif //CHAPTER5_NUMSEQUENCE_H

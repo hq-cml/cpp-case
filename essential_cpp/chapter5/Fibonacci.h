@@ -21,7 +21,7 @@ public:
     _length(len), _beg_pos(beg_pos){}
 
     virtual int elem(int pos) const;                          // 返回pos位置的元素
-    virtual const char * what_am_i() const {return "Fib";};   //返回确切的数列类型
+    virtual const char * what_am_i() const {return "Fibonacci";}   //返回确切的数列类型
     virtual ostream &print(ostream &os=cout) const;           // 输出所有元素
 
     int length()const {return _length;}
