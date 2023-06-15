@@ -6,9 +6,9 @@
 
 int main() {
     //TestMemberFuncPtr();
-    //TestLessThan();
+    TestLessThan();
     //TestUseMatrix();
-    TestUseTrangular();
+   // TestUseTrangular();
     //TestStack();
     return 0;
 }
