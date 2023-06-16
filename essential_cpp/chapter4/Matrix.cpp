@@ -34,6 +34,7 @@ Matrix& Matrix::operator=(const Matrix &src) {
     for(int i=0; i<_col*_row; i++) {
         _pmat[i] = src._pmat[i];
     }
+    return *this;
 }
 
 // Note: 重载<<和>>

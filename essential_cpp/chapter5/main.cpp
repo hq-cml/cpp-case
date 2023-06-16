@@ -3,16 +3,18 @@
 #include "LibMat.h"
 #include "Fibonacci.h"
 #include "Triangular.h"
+#include "Matrix.h"
 
 void TestInherit();
 void TestDestructor();
 
 int main() {
+    UseMatrix();
     //TestInherit();
     //TestUseTriangular();
     // TestUseFib();
     //TestPrint();
-    TestDestructor();
+    //TestDestructor();
     return 0;
 }
 
