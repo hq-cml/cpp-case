@@ -15,9 +15,12 @@ bool NumSequence::check_integrity(int pos, int size) const {
     // Note: 这里非常骚的操作
     //     1. 在父类中调用了一个纯虚函数
     //     2. 这里最终将因为多态机制，实际调用的是子类的方法！
+    //     3. 注意这种骚操作有一个例外！
+    //        如果是在构造函数、析构函数内，多态机制失效，只会调用父类自己的函数
+    //        原因是因为调用父类构造的时候，子类对象还未生成或已经消失
     if(pos > size) {
         //cout << "here2" <<endl;
-        gen_elems(pos);
+        gen_elems(pos); // Note：本质上是指针引发多态，等价于this->gen_elems(pos);
     }
     return true;
 }

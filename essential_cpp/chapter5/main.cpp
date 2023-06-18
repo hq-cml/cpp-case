@@ -4,12 +4,14 @@
 #include "Fibonacci.h"
 #include "Triangular.h"
 #include "Matrix.h"
+#include "RTTI.h"
 
 void TestInherit();
 void TestDestructor();
 
 int main() {
-    UseMatrix();
+    TestRtti();
+    //UseMatrix();
     //TestInherit();
     //TestUseTriangular();
     // TestUseFib();

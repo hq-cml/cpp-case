@@ -3,4 +3,4 @@ project(chapter5)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(chapter5 main.cpp LibMat.cpp LibMat.h NumSequence.cpp NumSequence.h Fibonacci.cpp Fibonacci.h Triangular.cpp Triangular.h Matrix.cpp Matrix.h)
+add_executable(chapter5 main.cpp LibMat.cpp LibMat.h NumSequence.cpp NumSequence.h Fibonacci.cpp Fibonacci.h Triangular.cpp Triangular.h Matrix.cpp Matrix.h RTTI.cpp RTTI.h)
