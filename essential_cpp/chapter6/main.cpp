@@ -1,9 +1,11 @@
 #include <iostream>
 
 #include "BinaryTree.h"
+#include "less_than.h"
 
 int main() {
-    TestBTree();
+    TestLessThan ();
+    //TestBTree();
     //std::cout << "Hello, World!" << std::endl;
     return 0;
 }

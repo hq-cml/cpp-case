@@ -19,6 +19,10 @@ void simpleUse() {
     // Note: 其实这就等价于bind2nd(less<int>(), 10)
     cout << "bind2nd(less<int>(), 10)(88): " << bind2nd(less<int>(), 10)(88)<<endl;
     cout << "bind2nd(less<int>(), 10)(5): " << bind2nd(less<int>(), 10)(5)<<endl;
+
+    // Note: 进一步等价
+    cout << less<int>()(88,10) << endl;
+    cout << less<int>()(5,10) << endl;
 }
 
 // Note: function object用来计数
