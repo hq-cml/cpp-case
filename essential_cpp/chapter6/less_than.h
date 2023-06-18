@@ -25,7 +25,8 @@ private:
 
 //Note: 进一步通用化！
 //     1. 上面的LessThan有一个局限，因为是模板类，如果用户传入了一个不支持比大小的类型，比如string，则会出错
-//     2. 所以需要进一步的抽象通用化，
+//     2. 所以需要进一步的抽象通用化，引入模板的第二个参数
+//     3. 模板参数也可以有默认值，例如这里的 typename Comp = less<elemType>
 template<typename elemType, typename Comp = less<elemType> >
 class LessThanPred {
 public:
