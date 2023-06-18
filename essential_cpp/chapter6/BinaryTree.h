@@ -4,6 +4,8 @@
 
 #ifndef CHAPTER6_BINARYTREE_H
 #define CHAPTER6_BINARYTREE_H
+#include <iostream>
+using namespace std;
 
 void TestBTree();
 
@@ -19,8 +21,9 @@ public:
     BNode();
     BNode(const valType &val);
     void insert_value(const valType &val);
-    void Pre(BNode *pt);
-    void Mid(BNode *pt);
+    void Pre(BNode *pt, ostream &os);
+    void Mid(BNode *pt, ostream &os);
+
 private:
     valType _val;
     int _cnt;
@@ -57,8 +60,11 @@ public:
     void clear();
     void insert(const elemType &elem);
 
-    void Pre();
-    void Mid();
+    void Pre(ostream &os) const;
+    void Mid(ostream &os) const;
+    ostream& print( ostream &os,
+                    void (BinaryTree<elemType>::*func)(ostream &os) const =
+                    &BinaryTree<elemType>::Mid) const;
 private:
     BNode<elemType> *_root;
     void copy(BNode<elemType> *dst, BNode<elemType> *src); //src子树复制到dst子树

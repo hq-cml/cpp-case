@@ -29,21 +29,21 @@ insert_value(const valType& val) {
 
 template<typename valType>
 void BNode<valType>::
-Pre(BNode *pt) {
+Pre(BNode *pt, ostream &os) {
     if (pt) {
-        cout << pt->_val;
-        Pre(pt->_lchild);
-        Pre(pt->_rchild);
+        os << pt->_val;
+        Pre(pt->_lchild, os);
+        Pre(pt->_rchild, os);
     }
 }
 
 template<typename valType>
 void BNode<valType>::
-Mid(BNode *pt) {
+Mid(BNode *pt,ostream &os) {
     if (pt) {
-        Mid(pt->_lchild);
-        cout << pt->_val;
-        Mid(pt->_rchild);
+        Mid(pt->_lchild, os);
+        os << pt->_val;
+        Mid(pt->_rchild,os );
     }
 }
 
@@ -92,20 +92,37 @@ insert(const elemType &elem) {
     }
 }
 
+// print，实现很抽象
+template <typename elemType>
+ostream& BinaryTree<elemType>::
+print( ostream &os, void (BinaryTree::*func)(ostream &os) const ) const {
+    (this->*func)(os);
+    return os;
+}
+
 // Pre
 template<typename elemType>
 inline void BinaryTree<elemType>::
-Pre() {
-    _root->Pre(_root);
-    cout << endl;
+Pre(ostream &os) const {
+    _root->Pre(_root, os);
+    os << endl;
 }
 
 // Mid
 template<typename elemType>
 inline void BinaryTree<elemType>::
-Mid() {
-    _root->Mid(_root);
-    cout << endl;
+Mid(ostream &os) const {
+    _root->Mid(_root, os);
+    os << endl;
+}
+
+// Note: 利用函数模板+类模板实现了<<的重载
+//       1. print()函数的视线非常抽象
+template<typename elemType>
+ostream& operator<<(ostream &os, const BinaryTree<elemType> &tree) {
+    os << "Tree: ";
+    tree.print(os);
+    return os;
 }
 
 void TestBTree() {
@@ -116,6 +133,8 @@ void TestBTree() {
     tree.insert(2);
     tree.insert(5);
 
-    tree.Pre();
-    tree.Mid();
+    tree.Pre(cout);
+    tree.Mid(cout);
+    //tree.print(cout);
+    cout << tree;
 }
