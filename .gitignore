@@ -1,3 +1,5 @@
 cmake-build-debug
 .idea
 build/
+essential_cpp/CMakeLists.txt
+essential_cpp/main.cpp
