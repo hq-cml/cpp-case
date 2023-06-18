@@ -15,7 +15,7 @@ void TestRtti() {
     cout << typeid(son).name()<<endl;
     cout << endl;
     cout << typeid(*p).name()<<endl;  // son
-    // Note: typeid也可以直接用于判断类型是否相同 
+    // Note: typeid也可以直接用于判断类型是否相同
     if(typeid(*p) == typeid(Father)) {
         cout<< "is father"<<endl;
     } else if(typeid(*p) == typeid(Son)) {
