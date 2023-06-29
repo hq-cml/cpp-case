@@ -16,10 +16,12 @@ public:
         cout<< "LibMat::LibMat() default constructor!" <<endl;
     }
 
+    // Note: 虚析构
     virtual ~LibMat() {
         cout<< "LibMat::~LibMat() destructor!" <<endl;
     }
 
+    // Note: virtual虚函数的覆盖，是多态的前提，virtual关键字是必需的！
     virtual void print() const {
         cout << "LibMat::print() -- I am a LibMat object!"<< endl;
     }
@@ -44,7 +46,8 @@ public:
         cout << "Book::~Book() destructor!"<<endl;
     }
 
-    // Note：虚函数，这个关键字是必须的，否则无法实现多态（这一点和Java不同，Java中只要覆盖就可以）
+    // Note：虚函数，这个关键字是必须的，否则无法实现多态
+    //      这一点和Java不同，Java中只要覆盖就可以
     virtual void print() const {
         cout << "Book::print() -- I am a Book object! (" << _title << ", "<<_author <<")"<<endl;
     }

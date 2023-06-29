@@ -73,6 +73,14 @@ void TestFind() {
     string *ps = findV4(arrStr, arrStr+4, need);
     cout << *ps << endl;
     // vector类型使用
-    int *pv = findV4(&arrVec[0], &arrVec[arrVec.size()], 4);
+    int *pv = findV4(&arrVec[0], &arrVec[0] + arrVec.size(), 4);
     cout << *pv << endl;
+    pv = findV4(&arrVec[0], &arrVec[0] + arrVec.size(), 8);
+    cout << *pv << endl;
+    pv = findV4(&arrVec[0], &arrVec[0] + arrVec.size(), 9);
+    if (pv) {
+        cout << *pv << endl;
+    } else {
+        cout << "not find " << 9 <<endl;
+    }
 }

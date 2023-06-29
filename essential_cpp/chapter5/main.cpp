@@ -11,10 +11,13 @@ void TestDestructor();
 
 int main() {
     TestRtti();
+
     //UseMatrix();
+
     //TestInherit();
+
+    //TestUseFib();
     //TestUseTriangular();
-    // TestUseFib();
     //TestPrint();
     //TestDestructor();
     return 0;

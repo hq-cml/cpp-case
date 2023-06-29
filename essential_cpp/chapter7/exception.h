@@ -1,7 +1,6 @@
 //
 // Created by hq on 2023/6/18.
 //
-
 #ifndef CHAPTER7_EXCEPTION_H
 #define CHAPTER7_EXCEPTION_H
 #include <iostream>
@@ -32,7 +31,7 @@ public:
     //      PS：需要加上throw()语句，可能是新规范
     virtual const char* what() const throw() {
         string msg = "MyExcp:"+_msg;
-        return msg.c_str();
+        return msg.c_str(); //Note: string => char *
     }
 private:
     string _msg;

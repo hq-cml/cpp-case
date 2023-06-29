@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-// 静态成员定义
+// Note: 静态成员定义
 vector<int> Triangular::_elems;
 
 void Triangular::gen_elems(int pos) const {

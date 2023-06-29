@@ -6,7 +6,8 @@
 
 int main() {
     TestMemberTemplate();
-    //TestLessThan ();
+    //TestLessThanPred();
+    //TestLessThan();
     //TestBTree();
     //std::cout << "Hello, World!" << std::endl;
     return 0;

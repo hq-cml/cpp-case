@@ -1,11 +1,11 @@
 //
 // Created by hq on 2023/6/11.
 //
-
 #include "NumSequence.h"
 #include <iostream>
 using namespace std;
 
+// 检查pos是否为有效位置，并且如果此时序列没有达到pos，则自动延展
 bool NumSequence::check_integrity(int pos, int size) const {
     if (pos <=0 || pos > _max_elems) {
         cerr << "invalid pos" << endl;
@@ -25,16 +25,15 @@ bool NumSequence::check_integrity(int pos, int size) const {
     return true;
 }
 
-
+// 返回pos位置的元素
 int NumSequence::elem(int pos) const {
-    // Note: 无缝使用继承得来的函数
     if(!check_integrity(pos, _relems.size())) {
         return 0;
     }
     return _relems[pos-1];
 }
 
-
+// 输出所有元素
 ostream& NumSequence::print(ostream &os) const {
     int elem_pos = _beg_pos-1;
     int end_pos = elem_pos+_length;
@@ -48,7 +47,6 @@ ostream& NumSequence::print(ostream &os) const {
     }
     return os;
 }
-
 
 // Note: <<运算符重载
 ostream &operator<<(ostream &os, const NumSequence &ns) {

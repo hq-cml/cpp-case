@@ -5,8 +5,9 @@
 #include "less_than.h"
 using namespace std;
 
-void simpleUse() {
+void TestLessThan() {
     // Note: 模板类的使用：LessThan<int>
+    //       chapter4中使用：LessThan lt_10(10);这里多了<int>
     LessThan<int> lt_10(10);
     cout << "lt_10(10)(80): " << lt_10(88)<<endl;
     cout << "lt_10(10)(5): " << lt_10(5)<<endl;
@@ -35,11 +36,15 @@ void TestLessThanPred() {
 //    cout << "lt3(10)(5): " << lt3(5)<<endl;
 
     LessThanPred<string, StringComp> lt4("Hello");
-    cout << "lt4(80): " << lt4("hello world")<<endl;
-    cout << "lt4(5): " << lt4("hel")<<endl;
-}
+    cout << "lt4(hello world): " << lt4("hello world")<<endl;
+    cout << "lt4(hel): " << lt4("hel")<<endl;
 
-void TestLessThan () {
-    //simpleUse();
-    TestLessThanPred();
+    cout << "-----------------" <<endl;
+    StringComp s;
+    cout <<endl;
+    cout << s("a", "aa")<<endl;
+    cout << s("aa", "a")<<endl;
+    // 等价
+    cout << StringComp()("a","aa")<<endl;
+    cout << StringComp()("a","a")<<endl;
 }

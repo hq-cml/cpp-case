@@ -30,10 +30,10 @@ public:
     // 拷贝构造
     Matrix(const Matrix&);
     // 拷贝赋值
-   Matrix& operator=(const Matrix&);
+    Matrix& operator=(const Matrix&);
 
-   int Cap() {return cap;}
-   int Get(int idx) {return p[idx];}
+    int Cap() {return cap;}
+    int Get(int idx) {return p[idx];}
 private:
     int cap;
     int *p;

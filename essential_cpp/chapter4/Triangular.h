@@ -32,7 +32,7 @@ private:
 // Note: 主类
 class Triangular {
 public:
-    // Note: 友元
+    // Note: 友元类
     //      1. 将TriangularIterator声明为主类的朋友类，则在迭代器里面可以访问主类的private成员
     //      2. 友元的另一种形式是友元函数，就是只针对一个方法来声明友元，同样是使用friend关键字
     //      3. 友元破坏了封装性，最好别乱用，这里其实可以对private成员提供public的getter方法避免友元
@@ -82,7 +82,8 @@ public:
 private:
     int _length;  // 元素个数
     int _beg_pos; // 起始位置
-    mutable int _next;    // 下一个迭代位置 Note: mutable表示即便是const标记函数，也能更改它
+    // Note: mutable关键字，表示即便是const标记函数，也能更改它
+    mutable int _next;    // 下一个迭代位置
 
     // Note: 类静态成员
     //     1. vector<int>这类这里这里仅是声明，它还必须拥有一份明确的定义（源文件中）
@@ -106,7 +107,7 @@ inline void TriangularIterator::check_integrity() const {
         Triangular::gen_elems(_index+1);
     }
 }
-
+//Note: 运算符重载
 inline bool TriangularIterator::operator==(const TriangularIterator &t) const {
     return _index == t._index;
 }

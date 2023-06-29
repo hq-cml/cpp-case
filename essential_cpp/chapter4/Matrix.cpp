@@ -49,13 +49,14 @@ ostream& operator<<(ostream &os, const Matrix &src) {
 
 void TestUseMatrix() {
     Matrix m1(10, 10);
-    // 如果没有实现拷贝构造函数，下面的语句将触发堆内存的二次释放，引发严重错误
+    // 如果没有实现拷贝构造函数，下面的语句在出离大括号后
+    // 将触发堆内存的二次释放，引发严重错误
     {
-        Matrix m2 = m1;
+        Matrix m2 = m1; // Note: 拷贝构造将被调用
     }
 
     Matrix m3(1, 1);
-    m3 = m1;
+    m3 = m1; // Note: 拷贝赋值将被调用
 
     cout << m1;
 }

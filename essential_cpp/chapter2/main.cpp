@@ -17,8 +17,8 @@ void UseVector();
 int main() {
 
     //测试 extern关键字的使用
-    const vector<int>*v = seq_arr[0](10);
-    display(*v, cout);
+    //const vector<int>*v = seq_arr[0](10);
+    //display(*v, cout);
 
     //const vector<int> *elems =  fibo_seq(10);
     //display(*elems);
@@ -26,7 +26,7 @@ int main() {
 
     //UseVector();
 
-    //begin();
+    begin();
     return 0;
 }
 

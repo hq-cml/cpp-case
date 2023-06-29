@@ -51,16 +51,18 @@ void UseMap() {
         cout << "Key:" << it->first<< ". Val:"<< it->second << endl;
     }
 
-    // 判断key
-    if(words.find("shit")!=words.end()) {
+    // 判断key存在的方法
+    if (words.count("shit")) {
         cout << "exist"<<endl;
     } else {
         cout << "not exist"<<endl;
     }
 
-    // 判断key的第二种方法
-    if (words.count("foo")) {
-        cout << "exist"<<endl;
+    // 判断key存在同时读取出来
+    map<string, int>::iterator it1 = words.find("foo");
+    if(it1!=words.end()) {
+        // Note: 这里如果不判断，直接使用it1，在key不存在的情况下会出现panic！
+        cout << "Key:" << it1->first<< ". Val:"<< it1->second << endl;
     } else {
         cout << "not exist"<<endl;
     }
@@ -128,7 +130,7 @@ void OtherOpt() {
     v2.push_back(4);
 
     if (v1==v2) {
-        cout << "same"<<endl;
+        cout << "same"<<endl; // Note：竟然是相等的，说明比较的是内容
     } else {
         cout << "not same" <<endl;
     }

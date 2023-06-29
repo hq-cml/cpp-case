@@ -14,15 +14,17 @@ using namespace std;
 void simpleUse() {
     LessThan lt_10(10);
     cout << "lt_10(10)(80): " << lt_10(88)<<endl;
+    cout << "lt_10(10)(80): " << lt_10.operator()(88)<<endl; // 等价
     cout << "lt_10(10)(5): " << lt_10(5)<<endl;
+    cout << "lt_10(10)(5): " << lt_10.operator()(5)<<endl; // 等价
 
     // Note: 其实这就等价于bind2nd(less<int>(), 10)
     cout << "bind2nd(less<int>(), 10)(88): " << bind2nd(less<int>(), 10)(88)<<endl;
     cout << "bind2nd(less<int>(), 10)(5): " << bind2nd(less<int>(), 10)(5)<<endl;
 
     // Note: 进一步等价
-    cout << less<int>()(88,10) << endl;
-    cout << less<int>()(5,10) << endl;
+    cout <<"less<int>()(88,10) "<< less<int>()(88,10) << endl;
+    cout <<"less<int>()(5,10) "<< less<int>()(5,10) << endl;
 }
 
 // Note: function object用来计数
@@ -30,13 +32,13 @@ int countLessThan(const vector<int> &vec, int base) {
     LessThan lt(base);
     int cnt = 0;
     for(int i=0; i<vec.size(); i++) {
+        //if (lt.operator()(vec[i])) { //等价
         if (lt(vec[i])) {
             cnt ++;
         }
     }
     return cnt;
 }
-
 bool less_than_5(int v) {
     return v < 5;
 }
@@ -84,11 +86,11 @@ void printLessThan(const vector<int> &vec, int base) {
 
 void TestLessThan () {
     simpleUse();
-    cout << endl;
+    cout << "--------------------------"<<endl<<endl;
     int a[6] = {1,2,3,4,5,6};
     vector<int> vec(a, a+6);
     int cnt = countLessThan(vec, 4);
     cout << cnt << endl;
-    cout << endl;
+    cout << "--------------------------"<<endl<<endl;
     printLessThan(vec, 5);
 }

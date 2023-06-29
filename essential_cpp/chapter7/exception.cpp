@@ -1,7 +1,6 @@
 //
 // Created by hq on 2023/6/18.
 //
-
 #include "exception.h"
 
 void ThrowExcp(int choose);
@@ -22,7 +21,7 @@ void TestExcp() {
 
 // Note：异常捕获
 //      1. 按类型捕获，可以用...进行兜底；另一种兜底方案是捕获excetion基类
-//      2. 用throw;可以二次抛出异常
+//      2. 用语句 throw; 可以二次抛出异常
 //      3. 因为C++中没有finally，所以在出现异常的情况下，对于资源的释放，无法自动进行！！
 //         解决办法是将资源释放移动到析构函数中（析构函数由CPP保证无论异常与否都会调用）！！
 void CatchExcp(int choose) {
@@ -39,7 +38,6 @@ void CatchExcp(int choose) {
         cout << "Unknow...";
         throw; // 二次抛出
     }
-
 }
 
 // Note: 异常抛出

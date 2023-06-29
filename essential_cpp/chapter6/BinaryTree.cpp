@@ -67,6 +67,7 @@ BinaryTree(const BinaryTree &src) {
 template<typename elemType>
 inline BinaryTree<elemType>::
 ~BinaryTree() {
+    //clear(); TODO
     cout << "Tree Destruct"<<endl;
 }
 
@@ -92,7 +93,9 @@ insert(const elemType &elem) {
     }
 }
 
-// print，实现很抽象
+// Note: print，实现很抽象
+//      1. print的第二个参数一个类成员函数指针（区别于普通函数指针，多了类作用域符）
+//      2. 第二参数是有默认值的，在类声明中，用的是Mid
 template <typename elemType>
 ostream& BinaryTree<elemType>::
 print( ostream &os, void (BinaryTree::*func)(ostream &os) const ) const {
@@ -117,7 +120,7 @@ Mid(ostream &os) const {
 }
 
 // Note: 利用函数模板+类模板实现了<<的重载
-//       1. print()函数的视线非常抽象
+//       1. print()函数的实现非常抽象
 template<typename elemType>
 ostream& operator<<(ostream &os, const BinaryTree<elemType> &tree) {
     os << "Tree: ";

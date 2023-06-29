@@ -1,3 +1,6 @@
+/*
+ * chapter3：泛型的编程风格
+ */
 #include <iostream>
 #include <fstream>
 #include <iterator>
@@ -9,17 +12,15 @@
 #include "container.h"
 #include "algorithms.h"
 using namespace std;
-/*
- * chapter3：泛型的编程风格
- */
+
 void file_sort();
 
 int main() {
-    file_sort();
+    //file_sort();
     //UseSet();
     //UseMap();
     //TestFuncObj();
-    //TestAlg();
+    TestAlg();
     //CommonAlg();
     //OtherOpt();
     //InsertDel();
@@ -30,9 +31,9 @@ int main() {
 }
 
 // Note: iostream迭代器
-// 使用io迭代器实现了文件排序
-//   istream_iterator：标准库定义的输入迭代器
-//   ostream_iterator：标准库定义的输出迭代器
+//      使用io迭代器实现了文件排序
+//      istream_iterator：标准库定义的输入迭代器
+//      ostream_iterator：标准库定义的输出迭代器
 void file_sort() {
     ifstream inFile("input.txt");
     ofstream outFile("out.txt");
@@ -45,7 +46,7 @@ void file_sort() {
     istream_iterator< string > is(inFile);
     istream_iterator< string > eof; // Note: 不加任何参数的初始化，标志着EOF
     vector<string> content;
-    copy (is, eof, back_inserter(content));
+    copy (is, eof, back_inserter(content)); // Note: back_inserter它处解释
 
     // 排序
     sort(content.begin(), content.end());

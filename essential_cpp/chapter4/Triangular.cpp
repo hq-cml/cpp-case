@@ -42,7 +42,7 @@ _length(t._length), _next(t._next), _beg_pos(t._beg_pos){
 
 // Note: 成员函数的const标记
 //       1. 标记为const的成员函数定义在类外的话，也需要const标记
-//       2. 这个标记可以参与重载！重载的第4种形式！！
+//       2. 这个标记可以参与重载判定！重载的第4种形式！！
 //       3. 一个const的引用变量，那么它只能调用被const标记过的方法！！！
 //          反之，一个非const引用变量，可以调用所有的方法！！！
 int Triangular::elem(int pos) const {
@@ -170,6 +170,7 @@ void TestUseTrangular() {
 //       2. 首先是定义的时候，需要带类信息
 //       3. 赋值的时候，采用&Class::func的形式赋值
 //       4. 使用的时候，需要搭配一个对象来使用（因为真正的成员指针只有在对象中才会有）
+//       5. 我个人理解之所以这么复杂的设计，是赋值的时候只用到了类信息，但是调用的时候却需要的是对象信息
 void TestMemberFuncPtr() {
     Triangular t2(5, 1);
     Triangular *p1 = &t2;

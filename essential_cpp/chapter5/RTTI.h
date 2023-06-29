@@ -16,7 +16,7 @@ class Father {
 public:
     // Note: typeid运算符
     //       类似于golang的reflect
-    //       用法1：可以用.name()方法返回字符串的名字，如下
+    //       用法1：可以用.name()方法返回字符串类型的类名字，如下
     //       用法2：也可以直接用于判断类型是否相同
     virtual const char* WhoAmI() {
         return typeid(*this).name();

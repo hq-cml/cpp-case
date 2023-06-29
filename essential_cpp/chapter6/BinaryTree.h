@@ -14,6 +14,7 @@ void TestBTree();
 template <typename Type>
 class BinaryTree;
 
+// Note: 类模板
 template <typename valType>
 class BNode {
     friend class BinaryTree<valType>; //Note: 友元类
@@ -25,8 +26,8 @@ public:
     void Mid(BNode *pt, ostream &os);
 
 private:
-    valType _val;
-    int _cnt;
+    valType _val;     // 节点值
+    int _cnt;         // 重复次数
     BNode *_lchild;
     BNode *_rchild;
 };
@@ -39,7 +40,7 @@ private:
 template <typename valType>
 inline BNode<valType>::
 BNode(const valType &val):_val(val) {
-    //_val = val; // 不建议！性能低
+    //_val = val; // 不建议！性能低；建议使用初始化器
     _cnt = 1;
     _lchild = _rchild = 0;
 }
@@ -62,7 +63,7 @@ public:
 
     void Pre(ostream &os) const;
     void Mid(ostream &os) const;
-    ostream& print( ostream &os,
+    ostream& print(ostream &os,
                     void (BinaryTree<elemType>::*func)(ostream &os) const =
                     &BinaryTree<elemType>::Mid) const;
 private:
